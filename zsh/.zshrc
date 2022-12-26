@@ -167,6 +167,7 @@ alias ga='f() { git add $1 && git status };f'
 alias gs="git status"
 alias gpod="git pull origin development"
 alias ga.="git add . && git status"
+alias glog="git log --oneline --decorate --graph  --pretty='format:%C(#F4BE69)%h %Cresetby %C(#CC8243)%an%Creset at %C(#9E7BB0)%ah%Creset: %C(#6A8759)%s'"
 alias production-deployments="kubectl -n production get deployments"
 alias staging-deployments="kubectl -n staging get deployments"
 alias tree="tree -C"
