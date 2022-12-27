@@ -174,6 +174,9 @@ alias tree="tree -C"
 alias fgc="getColorCode foreground"
 alias bgc="getColorCode background"
 alias code="open -a 'Visual Studio Code'"
+alias dcd="docker-compose down"
+alias dcu="docker-compose up"
+alias dcud="docker-compose up -d"
 
 
 
