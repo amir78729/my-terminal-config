@@ -169,8 +169,8 @@ alias gpod="git pull origin development"
 alias ga.="git add . && git status"
 alias glog="git log --oneline --decorate --graph  --pretty='format:%C(#F4BE69)%h %Cresetby %C(#CC8243)%an%Creset at %C(#9E7BB0)%ah%Creset: %C(#6A8759)%s'"
 
-alias gacm='f() { git add $1 && git status && git commit -m $2 };f'
-alias gacnm='f() { git add $1 && git status && git commit -nm $2 };f'
+alias gacm='f() { git add $1 && git status && gcm $2 };f'
+alias gacnm='f() { git add $1 && git status && gcnm $2 };f'
 
 
 alias production-deployments="kubectl -n production get deployments"
