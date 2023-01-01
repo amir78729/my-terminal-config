@@ -168,6 +168,11 @@ alias gs="git status"
 alias gpod="git pull origin development"
 alias ga.="git add . && git status"
 alias glog="git log --oneline --decorate --graph  --pretty='format:%C(#F4BE69)%h %Cresetby %C(#CC8243)%an%Creset at %C(#9E7BB0)%ah%Creset: %C(#6A8759)%s'"
+
+alias gacm='f() { git add $1 && git status && git commit -m $2 };f'
+alias gacnm='f() { git add $1 && git status && git commit -nm $2 };f'
+
+
 alias production-deployments="kubectl -n production get deployments"
 alias staging-deployments="kubectl -n staging get deployments"
 alias tree="tree -C"
@@ -228,3 +233,19 @@ eval $(thefuck --alias)
 setopt correct
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color? [Yes, No, Abort, Edit] "
 ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/tapsi/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/tapsi/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/tapsi/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/tapsi/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
