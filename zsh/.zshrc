@@ -206,6 +206,7 @@ alias code="open -a 'Visual Studio Code'"
 alias dcd="docker-compose down"
 alias dcu="docker-compose up"
 alias dcud="docker-compose up -d"
+alias hotfix='f() { git add . && git status && gcm "🔥 HOT FIX" && gp };f'
 
 
 
