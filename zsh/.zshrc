@@ -9,8 +9,8 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ip date_joined time_joined newline_joined battery dir_writable dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs status newline_joined)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ip date_joined time_joined newline_joined dir_writable dir)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs status battery newline_joined)
 
 POWERLEVEL9K_STATUS_CROSS=true
 
@@ -23,7 +23,7 @@ POWERLEVEL9K_STATUS_CROSS=true
 #    $'████ ▏' $'████▎▏' $'████▍▏' $'████▌▏' $'████▋▏' $'████▊▏' $'████▉▏' $'█████▏' )
 POWERLEVEL9K_BATTERY_STAGES="▁▂▃▄▅▆▇█"
 
-POWERLEVEL9K_BATTERY_LEVEL_BACKGROUND=(darkred orange4 yellow4 yellow4 chartreuse3 green3 green4 darkgreen)
+POWERLEVEL9K_BATTERY_LEVEL_BACKGROUND=(darkred orange4 yellow yellow green4 darkgreen)
 
 POWERLEVEL9K_BATTERY_CHARGING="yellow"
 POWERLEVEL9K_BATTERY_CHARGED="green"
