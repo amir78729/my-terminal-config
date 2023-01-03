@@ -9,10 +9,34 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ip date_joined time_joined newline_joined dir_writable dir)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ip date_joined time_joined newline_joined battery dir_writable dir)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs status newline_joined)
 
 POWERLEVEL9K_STATUS_CROSS=true
+
+
+# POWERLEVEL9K_BATTERY_STAGES=(
+#    $'▏    ▏' $'▎    ▏' $'▍    ▏' $'▌    ▏' $'▋    ▏' $'▊    ▏' $'▉    ▏' $'█    ▏'
+#    $'█▏   ▏' $'█▎   ▏' $'█▍   ▏' $'█▌   ▏' $'█▋   ▏' $'█▊   ▏' $'█▉   ▏' $'██   ▏'
+#    $'██   ▏' $'██▎  ▏' $'██▍  ▏' $'██▌  ▏' $'██▋  ▏' $'██▊  ▏' $'██▉  ▏' $'███  ▏'
+#    $'███  ▏' $'███▎ ▏' $'███▍ ▏' $'███▌ ▏' $'███▋ ▏' $'███▊ ▏' $'███▉ ▏' $'████ ▏'
+#    $'████ ▏' $'████▎▏' $'████▍▏' $'████▌▏' $'████▋▏' $'████▊▏' $'████▉▏' $'█████▏' )
+POWERLEVEL9K_BATTERY_STAGES="▁▂▃▄▅▆▇█"
+
+POWERLEVEL9K_BATTERY_LEVEL_BACKGROUND=(darkred orange4 yellow4 yellow4 chartreuse3 green3 green4 darkgreen)
+
+POWERLEVEL9K_BATTERY_CHARGING="yellow"
+POWERLEVEL9K_BATTERY_CHARGED="green"
+POWERLEVEL9K_BATTERY_DISCONNECTED=magenta
+POWERLEVEL9K_BATTERY_LOW_THRESHOLD=10
+POWERLEVEL9K_BATTERY_LOW_COLOR="red"
+POWERLEVEL9K_BATTERY_VERBOSE=false
+POWERLEVEL9K_BATTERY_HIDE_ABOVE_THRESHOLD=90
+# POWERLEVEL9K_BATTERY_LOW_BACKGROUND='transparent'
+# POWERLEVEL9K_BATTERY_CHARGING_BACKGROUND='transparent'
+# POWERLEVEL9K_BATTERY_CHARGED_BACKGROUND='transparent'
+# POWERLEVEL9K_BATTERY_DISCONNECTED_BACKGROUND='transparent'
+
 
 # `status` color customization
 POWERLEVEL9K_STATUS_ERROR_BACKGROUND='grey15'
@@ -226,7 +250,7 @@ add-zsh-hook preexec pre_validation  # Adds the hook
 # -------------------- END OF SHOW ALIASES REAL COMMANDS --------------------
 
 
-PATH="~/.nvm/versions/node/v12.22.1/bin:$PATH"
+PATH="~/.nvm/versions/node/v14.18.3/bin:$PATH"
 
 eval $(thefuck --alias)
 
@@ -249,3 +273,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
