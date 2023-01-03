@@ -23,7 +23,7 @@ POWERLEVEL9K_STATUS_CROSS=true
 #    $'████ ▏' $'████▎▏' $'████▍▏' $'████▌▏' $'████▋▏' $'████▊▏' $'████▉▏' $'█████▏' )
 POWERLEVEL9K_BATTERY_STAGES="▁▂▃▄▅▆▇█"
 
-POWERLEVEL9K_BATTERY_LEVEL_BACKGROUND=(darkred orange4 yellow yellow green4 darkgreen)
+POWERLEVEL9K_BATTERY_LEVEL_BACKGROUND=(darkred orange4 darkgreen)
 
 POWERLEVEL9K_BATTERY_CHARGING="yellow"
 POWERLEVEL9K_BATTERY_CHARGED="green"
