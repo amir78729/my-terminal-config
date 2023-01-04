@@ -9,7 +9,17 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ip date_joined time_joined newline_joined dir_writable dir)
+get_shamsi_date(){
+    local date=$(\
+        curl -s https://api.keybit.ir/time/ \
+        | python -c "import sys, json; print json.load(sys.stdin)['date']['full']['official']['usual']['en']"\
+    )
+    echo $date
+}
+
+POWERLEVEL9K_CUSTOM_SHAMSI_DATE="get_shamsi_date"
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ip date_joined custom_shamsi_date_joined time_joined newline_joined dir_writable dir)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs status battery newline_joined)
 
 POWERLEVEL9K_STATUS_CROSS=true
@@ -47,9 +57,13 @@ POWERLEVEL9K_STATUS_OK_FOREGROUND='green'
 
 POWERLEVEL9K_DATE_FORMAT=%D{%Y/%m/%d}
 
+# `shamsi date` color customization
+POWERLEVEL9K_CUSTOM_SHAMSI_DATE_BACKGROUND='transparent'
+POWERLEVEL9K_CUSTOM_SHAMSI_DATE_FOREGROUND='lightgoldenrod3'
+
 # `date` color customization
 POWERLEVEL9K_DATE_BACKGROUND='transparent'
-POWERLEVEL9K_DATE_FOREGROUND='lightgoldenrod3'
+POWERLEVEL9K_DATE_FOREGROUND='darkseagreen4'
 
 # `time` color customization
 POWERLEVEL9K_TIME_BACKGROUND='transparent'
