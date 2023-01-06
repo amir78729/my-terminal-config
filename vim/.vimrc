@@ -76,22 +76,6 @@ set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 
-
-" PLUGINS ---------------------------------------------------------------- {{{
-
-call plug#begin('~/.vim/plugged')
-
-
-  Plug 'doums/darcula'
-
-
-call plug#end()
-
-" }}}
-
-
-
-
 " STATUS LINE ------------------------------------------------------------ {{{
 
 " Clear status line when vimrc is reloaded.
