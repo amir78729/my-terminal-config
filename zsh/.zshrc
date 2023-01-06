@@ -191,39 +191,45 @@ source $ZSH/oh-my-zsh.sh
 
 
 # -------------------- SET ALIASES --------------------
-# For a full list of active aliases, run `alias`.
 
+# funcitons
 capitalize_first_letter() {
   foo=$(echo "$1")
   echo $(tr '[:lower:]' '[:upper:]' <<< ${foo:0:1})${foo:1}
 }
 
-alias k="kubectl"
+# git
+alias gs="git status -s"
 alias gcm='f() { git commit -m "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
 alias gcnm='f() { git commit -nm "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
-alias ga='f() { git add $1 && git status };f'
-alias gs="git status"
+alias ga='f() { git add $1 && gs };f'
 alias gpod="git pull origin development"
-alias ga.="git add . && git status"
+alias ga.="git add . && gs"
 alias glog="git log --oneline --decorate --graph  --pretty='format:%C(#F4BE69)%h %Cresetby %C(#CC8243)%an%Creset at %C(#9E7BB0)%ah%Creset: %C(#6A8759)%s'"
+alias hotfix='f() { git add . && gs && gcm "🔥 HOT FIX" && gp };f'
+alias pullpush="gpod && gp"
+alias greset="git reset"
+alias ga.cm='f() { git add . && gs && gcm $1 };f'
+alias gacm='f() { git add $1 && gs && gcm $2 };f'
+alias gacnm='f() { git add $1 && gs && gcnm $2 };f'
 
-alias gacm='f() { git add $1 && git status && gcm $2 };f'
-alias gacnm='f() { git add $1 && git status && gcnm $2 };f'
+# k8s
+alias k="kubectl"
+alias production-deployments="k -n production get deployments"
+alias staging-deployments="k -n staging get deployments"
 
+# docker
+alias dcd="docker-compose down"
+alias dcu="docker-compose up"
+alias dcup="dcu"
+alias dcud="docker-compose up -d"
+alias dcupd="dcud"
 
-alias production-deployments="kubectl -n production get deployments"
-alias staging-deployments="kubectl -n staging get deployments"
+# other
 alias tree="tree -C"
 alias fgc="getColorCode foreground"
 alias bgc="getColorCode background"
 alias code="open -a 'Visual Studio Code'"
-alias dcd="docker-compose down"
-alias dcu="docker-compose up"
-alias dcud="docker-compose up -d"
-alias hotfix='f() { git add . && git status && gcm "🔥 HOT FIX" && gp };f'
-alias pullpush="gpod && gp"
-
-
 
 # -------------------- END OF SET ALIASES --------------------
 
