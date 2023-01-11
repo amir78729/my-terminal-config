@@ -19,7 +19,7 @@ get_shamsi_date(){
 
 POWERLEVEL9K_CUSTOM_SHAMSI_DATE="get_shamsi_date"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ip date_joined custom_shamsi_date_joined time_joined newline_joined dir_writable dir)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ip date_joined time_joined newline_joined dir_writable dir)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs status battery newline_joined)
 
 POWERLEVEL9K_STATUS_CROSS=true
@@ -63,7 +63,7 @@ POWERLEVEL9K_CUSTOM_SHAMSI_DATE_FOREGROUND='lightgoldenrod3'
 
 # `date` color customization
 POWERLEVEL9K_DATE_BACKGROUND='transparent'
-POWERLEVEL9K_DATE_FOREGROUND='darkseagreen4'
+POWERLEVEL9K_DATE_FOREGROUND='lightgoldenrod3'
 
 # `time` color customization
 POWERLEVEL9K_TIME_BACKGROUND='transparent'
@@ -212,6 +212,7 @@ alias greset="git reset"
 alias ga.cm='f() { git add . && gs && gcm $1 };f'
 alias gacm='f() { git add $1 && gs && gcm $2 };f'
 alias gacnm='f() { git add $1 && gs && gcnm $2 };f'
+alias checkpoint='f() { ga.cm "📌 CHECKPOINT" };f'
 
 # k8s
 alias k="kubectl"
