@@ -228,6 +228,8 @@ alias dcupd="dcud"
 
 # other
 alias tree="tree -C"
+alias curljson='f() { $($1) | json_pp };f'
+alias csv="sed 's/,,/, ,/g;s/,,/, ,/g' $1 | column -s, -t" 
 alias fgc="getColorCode foreground"
 alias bgc="getColorCode background"
 alias code="open -a 'Visual Studio Code'"
@@ -279,7 +281,6 @@ eval $(thefuck --alias)
 
 setopt correct
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color? [Yes, No, Abort, Edit] "
-___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -299,3 +300,4 @@ unset __conda_setup
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
