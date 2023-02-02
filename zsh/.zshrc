@@ -233,6 +233,7 @@ alias csv="sed 's/,,/, ,/g;s/,,/, ,/g' $1 | column -s, -t"
 alias fgc="getColorCode foreground"
 alias bgc="getColorCode background"
 alias code="open -a 'Visual Studio Code'"
+alias forti="sudo openfortivpn -c /usr/local/etc/openfortivpn/openfortivpn/config"
 
 # -------------------- END OF SET ALIASES --------------------
 
