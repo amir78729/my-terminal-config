@@ -227,6 +227,7 @@ alias dcud="docker-compose up -d"
 alias dcupd="dcud"
 
 # other
+alias y="yarn"
 alias tree="tree -C"
 alias curljson='f() { $($1) | json_pp };f'
 alias csv="sed 's/,,/, ,/g;s/,,/, ,/g' $1 | column -s, -t" 
