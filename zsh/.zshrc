@@ -27,13 +27,13 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram battery newline)
 POWERLEVEL9K_STATUS_CROSS=true
 
 
-POWERLEVEL9K_BATTERY_STAGES=(
-   $'░░░░░▏'
-   $'█░░░░▏'
-   $'██░░░▏'
-   $'███░░▏'
-   $'████░▏' )
-# POWERLEVEL9K_BATTERY_STAGES="▁▂▃▄▅▆▇█"
+# POWERLEVEL9K_BATTERY_STAGES=(
+#    $'░░░░░▏'
+#    $'█░░░░▏'
+#    $'██░░░▏'
+#    $'███░░▏'
+#    $'████░▏' )
+POWERLEVEL9K_BATTERY_STAGES="▁▂▃▄▅▆▇█"
 
 POWERLEVEL9K_BATTERY_LEVEL_BACKGROUND=(darkred orange4 darkgreen)
 
@@ -47,8 +47,8 @@ POWERLEVEL9K_BATTERY_CHARGED="green"
 POWERLEVEL9K_BATTERY_DISCONNECTED="magenta"
 POWERLEVEL9K_BATTERY_LOW_THRESHOLD=10
 # POWERLEVEL9K_BATTERY_LOW_COLOR="red"
-POWERLEVEL9K_BATTERY_VERBOSE=false
-POWERLEVEL9K_BATTERY_HIDE_ABOVE_THRESHOLD=90
+# POWERLEVEL9K_BATTERY_VERBOSE=false
+# POWERLEVEL9K_BATTERY_HIDE_ABOVE_THRESHOLD=90
 
 POWERLEVEL9K_BATTERY_LOW_BACKGROUND='transparent'
 POWERLEVEL9K_BATTERY_CHARGING_BACKGROUND='transparent'
@@ -228,20 +228,24 @@ capitalize_first_letter() {
 }
 
 # git
-alias gs="git status -s"
-alias gcm='f() { git commit -m "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
-alias gcnm='f() { git commit -nm "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
+alias gl="echo '⬇️ Pulling Code:' && git pull && echo '✨ Pulled successfully!'"
+alias gp="echo '⬆️ Pushing Code:' && git push && echo '✨ Pushed successfully!'"
+alias gs="echo '🔎 Status:' && git status -s"
+alias gcm='f() { echo "📝 Committing changes:" && git commit -m "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
+alias gcnm='f() { echo "📝 Committing changes:" && git commit -nm "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
 alias ga='f() { git add $1 && gs };f'
-alias gpod="git pull origin development"
+alias gpod="echo '⬇️ Pulling Development...' && git pull origin development && echo '✨ Pulled successfully!'"
 alias ga.="git add . && gs"
 alias glog="git log --oneline --decorate --graph  --pretty='format:%C(#F4BE69)%h %Cresetby %C(#CC8243)%an%Creset at %C(#9E7BB0)%ah%Creset: %C(#6A8759)%s'"
 alias hotfix='f() { git add . && gs && gcm "🔥 HOT FIX" && gp };f'
 alias pullpush="gpod && gp"
 alias greset="git reset"
 alias ga.cm='f() { git add . && gs && gcm $1 };f'
+alias ga.cnm='f() { git add . && gs && gcnm $1 };f'
 alias gacm='f() { git add $1 && gs && gcm $2 };f'
 alias gacnm='f() { git add $1 && gs && gcnm $2 };f'
 alias checkpoint='f() { ga.cm "📌 CHECKPOINT" };f'
+
 
 # k8s
 alias k="kubectl"
@@ -262,46 +266,46 @@ alias curljson='f() { $($1) | json_pp };f'
 alias csv="sed 's/,,/, ,/g;s/,,/, ,/g' $1 | column -s, -t" 
 alias fgc="getColorCode foreground"
 alias bgc="getColorCode background"
-alias code="open -a 'Visual Studio Code'"
-alias forti="sudo openfortivpn -c /usr/local/etc/openfortivpn/openfortivpn/config"
+alias code="echo '💻 Opening VSCode...' && open -a 'Visual Studio Code'"
+alias forti="echo '🔐 Running Forti VPN:' && sudo openfortivpn -c /usr/local/etc/openfortivpn/openfortivpn/config"
 
 # -------------------- END OF SET ALIASES --------------------
 
 
 
 # -------------------- SHOW ALIASES REAL COMMANDS --------------------
-local cmd_alias=""
-# Reveal Executed Alias
-alias_for() {
-  [[ $1 =~ '[[:punct:]]' ]] && return
-  local search=${1}
-  local found="$( alias $search )"
-  if [[ -n $found ]]; then
-    found=${found//\\//} # Replace backslash with slash
-    found=${found%\'} # Remove end single quote
-    found=${found#"$search='"} # Remove alias name
-    echo "${found} ${2}" | xargs # Return found value (with parameters)
-  else
-    echo ""
-  fi
-}
-expand_command_line() {
-  first=$(echo "$1" | awk '{print $1;}')
-  rest=$(echo ${${1}/"${first}"/})
-
-  if [[ -n "${first//-//}" ]]; then # is not hypen
-    cmd_alias="$(alias_for "${first}" "${rest:1}")" # Check if there's an alias for the command
-    if [[ -n $cmd_alias ]]; then # If there was
-      echo "${T_GREEN}❯ ${T_YELLOW}${cmd_alias}${F_RESET}" # Print it
-    fi
-  fi
-}
-pre_validation() {
-  [[ $# -eq 0 ]] && return # If there's no input, return. Else...
-  expand_command_line "$@"
-}
-autoload -U add-zsh-hook  # Load the zsh hook module. 
-add-zsh-hook preexec pre_validation  # Adds the hook 
+# local cmd_alias=""
+# # Reveal Executed Alias
+# alias_for() {
+#   [[ $1 =~ '[[:punct:]]' ]] && return
+#   local search=${1}
+#   local found="$( alias $search )"
+#   if [[ -n $found ]]; then
+#     found=${found//\\//} # Replace backslash with slash
+#     found=${found%\'} # Remove end single quote
+#     found=${found#"$search='"} # Remove alias name
+#     echo "${found} ${2}" | xargs # Return found value (with parameters)
+#   else
+#     echo ""
+#   fi
+# }
+# expand_command_line() {
+#   first=$(echo "$1" | awk '{print $1;}')
+#   rest=$(echo ${${1}/"${first}"/})
+# 
+#   if [[ -n "${first//-//}" ]]; then # is not hypen
+#     cmd_alias="$(alias_for "${first}" "${rest:1}")" # Check if there's an alias for the command
+#     if [[ -n $cmd_alias ]]; then # If there was
+#       echo "${T_GREEN}❯ ${T_YELLOW}${cmd_alias}${F_RESET}" # Print it
+#     fi
+#   fi
+# }
+# pre_validation() {
+#   [[ $# -eq 0 ]] && return # If there's no input, return. Else...
+#   expand_command_line "$@"
+# }
+# autoload -U add-zsh-hook  # Load the zsh hook module. 
+# add-zsh-hook preexec pre_validation  # Adds the hook 
 
 # -------------------- END OF SHOW ALIASES REAL COMMANDS --------------------
 
