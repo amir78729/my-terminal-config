@@ -30,4 +30,4 @@ set font of your terminal to `Inconsolata for Powerline`
 
 use `.zshrc` for your `~/.zshrc` file.
 
-![image](https://user-images.githubusercontent.com/44297246/209336590-c0e3f432-46e8-4a11-9083-53a140e0454d.png)
+![image](https://user-images.githubusercontent.com/44297246/219365980-11b4cbe2-2948-4038-bbe4-824e561c8a95.png)
