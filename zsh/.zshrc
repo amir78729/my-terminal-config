@@ -228,16 +228,16 @@ capitalize_first_letter() {
 }
 
 # git
-alias gl="echo '⬇️ Pulling Code:' && git pull && echo '✨ Pulled successfully!'"
-alias gp="echo '⬆️ Pushing Code:' && git push && echo '✨ Pushed successfully!'"
+alias gl="echo '⬇️  Pulling Code:' && git pull && echo '✨ Pulled successfully!'"
+alias gp="echo '⬆️  Pushing Code:' && git push && echo '✨ Pushed successfully!'"
 alias gs="echo '🔎 Status:' && git status -s"
 alias gcm='f() { echo "📝 Committing changes:" && git commit -m "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
 alias gcnm='f() { echo "📝 Committing changes:" && git commit -nm "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
 alias ga='f() { git add $1 && gs };f'
-alias gpod="echo '⬇️ Pulling Development...' && git pull origin development && echo '✨ Pulled successfully!'"
+alias gpod="echo '⬇️  Pulling Development...' && git pull origin development && echo '✨ Pulled successfully!'"
 alias ga.="git add . && gs"
 alias glog="git log --oneline --decorate --graph  --pretty='format:%C(#F4BE69)%h %Cresetby %C(#CC8243)%an%Creset at %C(#9E7BB0)%ah%Creset: %C(#6A8759)%s'"
-alias hotfix='f() { git add . && gs && gcm "🔥 HOT FIX" && gp };f'
+alias hotfix='f() { echo "🔥 HOT FIX!" && git add . && gs && gcm "🔥 HOT FIX" && gp };f'
 alias pullpush="gpod && gp"
 alias greset="git reset"
 alias ga.cm='f() { git add . && gs && gcm $1 };f'
