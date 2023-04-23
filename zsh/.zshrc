@@ -242,25 +242,29 @@ alias gl="echo '⬇️  Pulling Code:' && git pull && echo '✨ Pulled successfu
 alias gp="echo '⬆️  Pushing Code:' && git push && echo '✨ Pushed successfully!'"
 alias gs="echo '🔎 Status:' && git status -s"
 alias gcm='f() { echo "📝 Committing changes:" && git commit -m "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
+alias gcmp='gcm && gp'
 alias gcnm='f() { echo "📝 Committing changes:" && git commit -nm "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
+alias gcnmp='gcnm && gp'
 alias ga='f() { git add $1 && gs };f'
 alias gpod="echo '⬇️  Pulling Development...' && git pull origin development && echo '✨ Pulled successfully!'"
 alias ga.="git add . && gs"
 alias glog="git log --oneline --decorate --graph  --pretty='format:%C(#F4BE69)%h %Cresetby %C(#CC8243)%an%Creset at %C(#9E7BB0)%ah%Creset: %C(#6A8759)%s'"
 alias hotfix='f() { echo "🔥 HOT FIX!" && git add . && gs && gcm "🔥 HOT FIX" && gp };f'
 alias pullpush="gpod && gp"
-alias greset="git reset"
+alias greset='f() { echo "🔄 Reset..." && git reset };f'
 alias ga.cm='f() { git add . && gs && gcm $1 };f'
 alias ga.cnm='f() { git add . && gs && gcnm $1 };f'
+alias ga.cmp='ga.cm && gp'
+alias ga.cnmp='ga.cnm && gp'
 alias gacm='f() { git add $1 && gs && gcm $2 };f'
 alias gacnm='f() { git add $1 && gs && gcnm $2 };f'
-alias checkpoint='f() { ga.cm "📌 CHECKPOINT" };f'
-
+alias gcheckpoint='f() { ga.cm "📌 CHECKPOINT" };f'
+alias checkpoint='gcheckpoint'
+alias gfix='f() { ga.cm "[FIX]" };f'
+alias gfixp='f() { ga.cm "[FIX]" && gp };f'
 
 # k8s
 alias k="kubectl"
-alias production-deployments="k -n production get deployments"
-alias staging-deployments="k -n staging get deployments"
 
 # docker
 alias dcd="docker-compose down"
@@ -278,6 +282,11 @@ alias fgc="getColorCode foreground"
 alias bgc="getColorCode background"
 alias code="echo '💻 Opening VSCode...' && open -a 'Visual Studio Code'"
 alias forti="echo '🔐 Running Forti VPN:' && sudo openfortivpn -c /usr/local/etc/openfortivpn/openfortivpn/config"
+alias curl="echo 'Running Curl...' && curl"
+alias sayFarsi="say -v Dariush"
+alias sayPersian="sayFarsi"
+
+
 
 # -------------------- END OF SET ALIASES --------------------
 
