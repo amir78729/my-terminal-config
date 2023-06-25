@@ -314,15 +314,18 @@ On_IWhite="\033[0;107m"   # White
 alias gl="echo '⬇️  Pulling Code:' && git pull && echo '✨ Pulled successfully!'"
 alias gp="echo '⬆️  Pushing Code:' && git push && echo '✨ Pushed successfully!'"
 alias gs="echo '🔎 Status:' && git status -s"
-alias gcm='f() { echo "📝 Committing changes:" && git commit -m "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
+# alias gcm='f() { echo "📝 Committing changes:" && git commit -m "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
+alias gcm='f() { echo "📝 Committing changes:" && git commit -m "$1" };f'
 alias gcmp='gcm && gp'
-alias gcnm='f() { echo "📝 Committing changes:" && git commit -nm "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
+# alias gcnm='f() { echo "📝 Committing changes:" && git commit -nm "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
+alias gcnm='f() { echo "📝 Committing changes:" && git commit -nm "$1" };f'
 alias gcnmp='gcnm && gp'
 alias ga='f() { git add $1 && gs };f'
 alias gpod="echo '⬇️  Pulling Development...' && git pull origin development && echo '✨ Pulled successfully!'"
 alias ga.="git add . && gs"
+alias gco.="gco ."
 alias glog="git log --oneline --decorate --graph  --pretty='format:%C(#F4BE69)%h %Cresetby %C(#CC8243)%an%Creset at %C(#9E7BB0)%ah%Creset: %C(#6A8759)%s'"
-alias hotfix='f() { echo "🔥 HOT FIX!" && git add . && gs && gcm "🔥 HOT FIX" && gp };f'
+alias hotfix='f() { echo "🔥 HOT FIX!" && git add . && gs && gcm "fix: HOT FIX 🔥" && gp };f'
 alias pullpush="gpod && gp"
 alias greset='f() { echo "🔄 Reset..." && git reset };f'
 alias ga.cm='f() { git add . && gs && gcm $1 };f'
@@ -333,10 +336,10 @@ alias gacm='f() { git add $1 && gs && gcm $2 };f'
 alias gacnm='f() { git add $1 && gs && gcnm $2 };f'
 alias gacmp='f() { git add $1 && gs && gcm $2 && gp };f'
 alias gacnmp='f() { git add $1 && gs && gcnm $2 && gp };f'
-alias gcheckpoint='f() { ga.cm "📌 CHECKPOINT" };f'
+alias gcheckpoint='f() { ga.cm "fix: 📌 CHECKPOINT" };f'
 alias checkpoint='gcheckpoint'
-alias gfix='f() { ga.cm "[FIX]" };f'
-alias gfixp='f() { ga.cm "[FIX]" && gp };f'
+alias gfix='f() { ga.cm "fix: remove and fix bugs" };f'
+alias gfixp='f() { gfix && gp };f'
 
 # k8s
 alias k="kubectl"
