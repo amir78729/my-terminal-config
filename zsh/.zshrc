@@ -375,9 +375,18 @@ alias dcup="dcu"
 alias dcud="dcu -d"
 alias dcupd="dcud"
 
+# yarn
+alias y="yarn"
+alias yr='f() { echo 🏃 Running ${BCyan}$1${Color_Off} script... && y run $1 };f'
+alias ya='f() { echo 📦 Adding package ${BCyan}$1${Color_Off}... && y add $1 };f'
+alias yi="echo '📦 Installing Packages...' && y install"
+
+# npm
+alias npmr='f() { echo 🏃 Running ${BCyan}$1${Color_Off} script... && npm run $1 };f'
+alias npmi="echo '📦 Installing Packages...' && npm install"
+
 # other
 alias cd='f() { echo 🐾 ${BGreen}$1${Color_Off} && cd $1 };f'
-alias y="yarn"
 alias tree="tree -C"
 alias curljson='f() { $($1) | json_pp };f'
 alias csv="sed 's/,,/, ,/g;s/,,/, ,/g' $1 | column -s, -t" 
