@@ -311,20 +311,20 @@ On_ICyan="\033[0;106m"    # Cyan
 On_IWhite="\033[0;107m"   # White
 
 # git
-alias gl="echo '⬇️  Pulling Code:' && git pull && echo '✨ Pulled successfully!'"
+alias gl="echo '⬇️  Pulling Code...' && git pull && echo '✨ Pulled successfully!'"
 
-alias gp="echo '🚀  Pushing Code:' && git push && echo '✨ Pushed successfully!'"
+alias gp="echo '🚀  Pushing Code...' && git push && echo '✨ Pushed successfully!'"
 
 alias gs="echo '🔎 Status:' && git status -s"
 
-# alias gcm='f() { echo "📝 Committing changes:" && git commit -m "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
+# alias gcm='f() { echo "📝 Committing changes..." && git commit -m "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
 
-alias gcm='f() { echo "📝 Committing changes:" && git commit -m "$1" };f'
+alias gcm='f() { echo "📝 Committing changes..." && git commit -m "$1" };f'
 alias gcmp='gcm && gp'
 
-# alias gcnm='f() { echo "📝 Committing changes:" && git commit -nm "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
+# alias gcnm='f() { echo "📝 Committing changes..." && git commit -nm "$(git rev-parse --abbrev-ref HEAD): $(capitalize_first_letter $1)." };f'
 
-alias gcnm='f() { echo "📝 Committing changes:" && git commit -nm "$1" };f'
+alias gcnm='f() { echo "📝 Committing changes..." && git commit -nm "$1" };f'
 alias gcnmp='gcnm && gp'
 
 alias ga='f() { git add $1 && gs };f'
@@ -397,6 +397,7 @@ alias forti="echo '🔐 Running Forti VPN:' && sudo openfortivpn -c /usr/local/e
 alias curl="echo 'Running Curl...' && curl"
 alias sayFarsi="say -v Dariush"
 alias sayPersian="sayFarsi"
+alias chrome-unsafe="echo '👽 Opening Google Chrome with disabled web security...' && open -na Google\ Chrome --args --user-data-dir=/tmp/temporary-chrome-profile-dir --disable-web-security" 
 
 
 
