@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 source /Users/$USER/.bash_profile
 export ZSH="$HOME/.oh-my-zsh"
@@ -229,6 +231,75 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 
+# -------------------- SHOW ALIASES REAL COMMANDS --------------------
+# local cmd_alias=""
+# # Reveal Executed Alias
+# alias_for() {
+#   [[ $1 =~ '[[:punct:]]' ]] && return
+#   local search=${1}
+#   local found="$( alias $search )"
+#   if [[ -n $found ]]; then
+#     found=${found//\\//} # Replace backslash with slash
+#     found=${found%\'} # Remove end single quote
+#     found=${found#"$search='"} # Remove alias name
+#     echo "${found} ${2}" | xargs # Return found value (with parameters)
+#   else
+#     echo ""
+#   fi
+# }
+# expand_command_line() {
+#   first=$(echo "$1" | awk '{print $1;}')
+#   rest=$(echo ${${1}/"${first}"/})
+# 
+#   if [[ -n "${first//-//}" ]]; then # is not hypen
+#     cmd_alias="$(alias_for "${first}" "${rest:1}")" # Check if there's an alias for the command
+#     if [[ -n $cmd_alias ]]; then # If there was
+#       echo "${T_GREEN}❯ ${T_YELLOW}${cmd_alias}${F_RESET}" # Print it
+#     fi
+#   fi
+# }
+# pre_validation() {
+#   [[ $# -eq 0 ]] && return # If there's no input, return. Else...
+#   expand_command_line "$@"
+# }
+# autoload -U add-zsh-hook  # Load the zsh hook module. 
+# add-zsh-hook preexec pre_validation  # Adds the hook 
+
+# -------------------- END OF SHOW ALIASES REAL COMMANDS --------------------
+
+
+PATH="~/.nvm/versions/node/v14.18.3/bin:$PATH"
+
+eval $(thefuck --alias)
+
+setopt correct
+export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color? [Yes, No, Abort, Edit] "
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/tapsi/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/tapsi/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/tapsi/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/tapsi/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
+
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+
 # -------------------- SET ALIASES --------------------
 
 # funcitons
@@ -355,6 +426,8 @@ alias gacnm='f() { ga $1 && gcnm $2 };f'
 alias gacmp='f() { ga $1 && gcmp $2 };f'
 alias gacnmp='f() { ga $1 && gcnmp $2 };f'
 
+alias gpod="echo '⬇️  Pulling Development...' && git pull origin development && echo '✨ Pulled successfully!'"
+
 alias gcheckpoint='f() { ga.cm "fix: 📌 CHECKPOINT" };f'
 alias gcheckpointn='f() { ga.cnm "fix: 📌 CHECKPOINT" };f'
 alias checkpoint='gcheckpoint'
@@ -402,69 +475,3 @@ alias chrome-unsafe="echo '👽 Opening Google Chrome with disabled web security
 
 
 # -------------------- END OF SET ALIASES --------------------
-
-
-
-# -------------------- SHOW ALIASES REAL COMMANDS --------------------
-# local cmd_alias=""
-# # Reveal Executed Alias
-# alias_for() {
-#   [[ $1 =~ '[[:punct:]]' ]] && return
-#   local search=${1}
-#   local found="$( alias $search )"
-#   if [[ -n $found ]]; then
-#     found=${found//\\//} # Replace backslash with slash
-#     found=${found%\'} # Remove end single quote
-#     found=${found#"$search='"} # Remove alias name
-#     echo "${found} ${2}" | xargs # Return found value (with parameters)
-#   else
-#     echo ""
-#   fi
-# }
-# expand_command_line() {
-#   first=$(echo "$1" | awk '{print $1;}')
-#   rest=$(echo ${${1}/"${first}"/})
-# 
-#   if [[ -n "${first//-//}" ]]; then # is not hypen
-#     cmd_alias="$(alias_for "${first}" "${rest:1}")" # Check if there's an alias for the command
-#     if [[ -n $cmd_alias ]]; then # If there was
-#       echo "${T_GREEN}❯ ${T_YELLOW}${cmd_alias}${F_RESET}" # Print it
-#     fi
-#   fi
-# }
-# pre_validation() {
-#   [[ $# -eq 0 ]] && return # If there's no input, return. Else...
-#   expand_command_line "$@"
-# }
-# autoload -U add-zsh-hook  # Load the zsh hook module. 
-# add-zsh-hook preexec pre_validation  # Adds the hook 
-
-# -------------------- END OF SHOW ALIASES REAL COMMANDS --------------------
-
-
-PATH="~/.nvm/versions/node/v14.18.3/bin:$PATH"
-
-eval $(thefuck --alias)
-
-setopt correct
-export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color? [Yes, No, Abort, Edit] "
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/tapsi/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/tapsi/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/tapsi/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/tapsi/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
