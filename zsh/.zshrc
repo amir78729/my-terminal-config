@@ -448,6 +448,7 @@ alias dcup="dcu"
 alias dcud="dcu -d"
 alias dcupd="dcud"
 
+
 # yarn
 alias y="yarn"
 alias yr='f() { echo 🏃 Running ${BCyan}$1${Color_Off} script... && y run $1 };f'
@@ -458,20 +459,39 @@ alias yi="echo '📦 Installing Packages...' && y install"
 alias npmr='f() { echo 🏃 Running ${BCyan}$1${Color_Off} script... && npm run $1 };f'
 alias npmi="echo '📦 Installing Packages...' && npm install"
 
+
 # other
+alias ls='exa --icons --across' 
 alias cd='f() { echo 🐾 ${BGreen}$1${Color_Off} && cd $1 };f'
 alias tree="tree -C"
-alias curljson='f() { $($1) | json_pp };f'
 alias csv="sed 's/,,/, ,/g;s/,,/, ,/g' $1 | column -s, -t" 
 alias fgc="getColorCode foreground"
 alias bgc="getColorCode background"
-alias code="echo '💻 Opening VSCode...' && open -a 'Visual Studio Code'"
 alias forti="echo '🔐 Running Forti VPN:' && sudo openfortivpn -c /usr/local/etc/openfortivpn/openfortivpn/config"
 alias curl="echo 'Running Curl...' && curl"
+alias curljson='f() { curl $1 | json_pp };f'
 alias sayFarsi="say -v Dariush"
 alias sayPersian="sayFarsi"
-alias chrome-unsafe="echo '👽 Opening Google Chrome with disabled web security...' && open -na Google\ Chrome --args --user-data-dir=/tmp/temporary-chrome-profile-dir --disable-web-security" 
 
+# apps
+alias code="echo '💻 Opening VSCode...' && open -a 'Visual Studio Code'"
+alias vscode='code' 
+alias docker-desktop="echo '🐳 Opening Docker Desktop...' && open -a Docker\ Desktop" 
+alias chrome="echo '⏳ Opening Google Chrome...' && open -a Google\ Chrome" 
+alias chrome-unsafe="echo '👽 Opening Google Chrome with disabled web security...' && open -na Google\ Chrome --args --user-data-dir=/tmp/temporary-chrome-profile-dir --disable-web-security" 
+alias firefox="echo '🦊 Opening Firefox...' && open -a Firefox" 
+alias safari="echo '🧭 Opening Safari...' && open -a Safari" 
+alias telegram="echo '🚀 Opening Telegram...' && open -a Telegram" 
+alias outlook="echo '📧 Opening Microsoft Outlook...' && open -a Microsoft\ Outlook" 
+
+# tapsi automation-backend
+alias run-seed='f() {curljson $1 && echo 🌱 The seed ran successfully};f'
+alias seed-local='run-seed http://localhost:8590/front/api/v1/seed/Automation-Backend@123' 
+alias seed-staging='run-seed https://automation-backend.staging.xp.tapsi.tech/front/api/v1/seed/Automation-Backend@123' 
+
+alias cabin-local='f() {echo 🎚️ Opening Cabin Locally... &&  open -a Google\ Chrome http://localhost:5500 };f'
+alias cabin-staging='f() {echo 🎚️ Opening Cabin Staging... &&  open -a Google\ Chrome https://cabin.staging.xp.tapsi.tech };f'
+alias cabin='f() {echo 🎚️ Opening Cabin... &&  open -a Google\ Chrome https://cabin.tapsi.ir };f'
 
 
 # -------------------- END OF SET ALIASES --------------------
