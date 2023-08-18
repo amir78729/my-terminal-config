@@ -1,0 +1,44 @@
+{
+    "colorize.include": [
+      "**/*.js",
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.css",
+      "**/*.scss",
+      "**/*.sass",
+      "**/*.less",
+      "**/*.styl"
+    ],
+    "editor.accessibilitySupport": "off",
+    "editor.cursorBlinking": "smooth",
+    "editor.fontFamily": "JetBrainsMono Nerd Font, JetBrains Mono, Vazir Code, Monolisa, Inter, Menlo, Monaco, 'Courier New', monospace",
+    "files.autoSave": "onFocusChange",
+    "gitlens.currentLine.dateFormat": "",
+    "npm.enableRunFromFolder": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "svg.preview.mode": "svg",
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font, JetBrains Mono, Vazir Code",
+    "window.commandCenter": false,
+    "workbench.colorTheme": "True Dark Github Theme",
+    "workbench.editor.showTabs": false,
+    "workbench.editorAssociations": {
+      "*.pdf": "default"
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.layoutControl.enabled": false,
+    "workbench.productIconTheme": "material-product-icons",
+    "workbench.startupEditor": "none",
+    "workbench.tree.indent": 10,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.hideStatusBar": false,
+    "zenMode.hideTabs": false,
+    "terminal.integrated.env.osx": {
+      "FIG_NEW_SESSION": "1"
+    },
+    "editor.mouseWheelZoom": true,
+    "terminal.integrated.fontSize": 13,
+    "editor.minimap.autohide": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.unicodeHighlight.includeStrings": false,
+    "material-ui-snippets.showNotesOnStartup": false
+  }
