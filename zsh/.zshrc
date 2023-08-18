@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -7,11 +14,18 @@ source ~/.fonts/*.sh
 
 # -------------------- THEME CONFIGS --------------------
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# POWERLEVEL9K_LEGACY_ICON_SPACING=true
+# ZLE_RPROMPT_INDENT=1
+
+
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+
 POWERLEVEL9K_MODE='awesome-fontconfig'
 
-
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
 
 get_shamsi_date(){
     local date=$(\
@@ -23,8 +37,8 @@ get_shamsi_date(){
 
 POWERLEVEL9K_CUSTOM_SHAMSI_DATE="get_shamsi_date"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(date time vcs newline dir_writable dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time load ram ip battery)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(date    time vcs newline dir_writable dir)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time load ram ip wifi battery disk_usage)
 
 POWERLEVEL9K_STATUS_CROSS=true
 
@@ -35,14 +49,52 @@ POWERLEVEL9K_STATUS_CROSS=true
 #    $'██░░░▏'
 #    $'███░░▏'
 #    $'████░▏' )
-POWERLEVEL9K_BATTERY_STAGES="▁▂▃▄▅▆▇█"
 
-POWERLEVEL9K_BATTERY_LEVEL_BACKGROUND=(darkred orange4 darkgreen)
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
+POWERLEVEL9K_SHORTEN_DELIMITER="…"
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+
+POWERLEVEL9K_VCS_SHORTEN_LENGTH=12
+POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=3
+POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_middle"
+POWERLEVEL9K_SHORTEN_DELIMITER="…"
+
+POWERLEVEL9K_SHOW_CHANGESET=true
 
 POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=""
 POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=""
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=""
 POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=""
+
+# `dir` color customization
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='transparent'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='darkseagreen4'
+
+POWERLEVEL9K_DIR_HOME_BACKGROUND='transparent'
+POWERLEVEL9K_DIR_HOME_FOREGROUND='deepskyblue3'
+
+POWERLEVEL9K_DIR_ETC_BACKGROUND='transparent'
+POWERLEVEL9K_DIR_ETC_FOREGROUND='lightgoldenrod3'
+
+POWERLEVEL9K_DIR_ROOT_BACKGROUND='transparent'
+POWERLEVEL9K_DIR_ROOT_FOREGROUND='darkseagreen4'
+
+POWERLEVEL9K_DIR_NOT_WRITABLE_BACKGROUND='transparent'
+POWERLEVEL9K_DIR_NOT_WRITABLE_FOREGROUND='red'
+
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='transparent'
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='lightgoldenrod3'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+POWERLEVEL9K_MODE='awesome-fontconfig'
+POWERLEVEL9K_BATTERY_STAGES="▁▂▃▄▅▆▇█"
+
+POWERLEVEL9K_BATTERY_LEVEL_BACKGROUND=(darkred orange4 darkgreen)
+
+
 POWERLEVEL9K_BATTERY_LOW_THRESHOLD=10
 POWERLEVEL9K_BATTERY_VERBOSE=false
 # POWERLEVEL9K_BATTERY_HIDE_ABOVE_THRESHOLD=90
@@ -112,7 +164,6 @@ POWERLEVEL9K_RAM_BACKGROUND='transparent'
 POWERLEVEL9K_RAM_FOREGROUND='orange3'
 
 
-
 # `ip` color customization
 POWERLEVEL9K_IP_BACKGROUND='transparent'
 POWERLEVEL9K_IP_FOREGROUND='mediumpurple2'
@@ -121,36 +172,12 @@ POWERLEVEL9K_IP_FOREGROUND='mediumpurple2'
 POWERLEVEL9K_HOST_LOCAL_BACKGROUND='grey15'
 POWERLEVEL9K_HOST_LOCAL_FOREGROUND='yellow'
 
-# `dir` color customization
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='transparent'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='darkseagreen4'
-
-POWERLEVEL9K_DIR_HOME_BACKGROUND='transparent'
-POWERLEVEL9K_DIR_HOME_FOREGROUND='deepskyblue3'
-
-POWERLEVEL9K_DIR_ETC_BACKGROUND='transparent'
-POWERLEVEL9K_DIR_ETC_FOREGROUND='lightgoldenrod3'
-
-POWERLEVEL9K_DIR_ROOT_BACKGROUND='transparent'
-POWERLEVEL9K_DIR_ROOT_FOREGROUND='darkseagreen4'
-
-POWERLEVEL9K_DIR_NOT_WRITABLE_BACKGROUND='transparent'
-POWERLEVEL9K_DIR_NOT_WRITABLE_FOREGROUND='red'
-
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='transparent'
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='lightgoldenrod3'
 
 
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
-POWERLEVEL9K_SHORTEN_DELIMITER="…"
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
-POWERLEVEL9K_VCS_SHORTEN_LENGTH=12
-POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=3
-POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_middle"
-POWERLEVEL9K_SHORTEN_DELIMITER="…"
 
-POWERLEVEL9K_SHOW_CHANGESET=true
+
+
 
 # -------------------- END OF THEME CONFIGS --------------------
 
