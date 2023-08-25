@@ -1,3 +1,6 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,8 +8,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 source /Users/$USER/.bash_profile
 export ZSH="$HOME/.oh-my-zsh"
@@ -14,170 +16,11 @@ source ~/.fonts/*.sh
 
 # -------------------- THEME CONFIGS --------------------
 
-# POWERLEVEL9K_LEGACY_ICON_SPACING=true
-# ZLE_RPROMPT_INDENT=1
-
-
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-
 POWERLEVEL9K_MODE='awesome-fontconfig'
-
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-
-
-get_shamsi_date(){
-    local date=$(\
-        curl -s https://api.keybit.ir/time/ \
-        | python -c "import sys, json; print json.load(sys.stdin)['date']['full']['official']['usual']['en']"\
-    )
-    echo $date
-}
-
-POWERLEVEL9K_CUSTOM_SHAMSI_DATE="get_shamsi_date"
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(date    time vcs newline dir_writable dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time load ram ip wifi battery disk_usage)
-
-POWERLEVEL9K_STATUS_CROSS=true
-
-
-# POWERLEVEL9K_BATTERY_STAGES=(
-#    $'░░░░░▏'
-#    $'█░░░░▏'
-#    $'██░░░▏'
-#    $'███░░▏'
-#    $'████░▏' )
-
-
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
-POWERLEVEL9K_SHORTEN_DELIMITER="…"
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-
-POWERLEVEL9K_VCS_SHORTEN_LENGTH=12
-POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=3
-POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_middle"
-POWERLEVEL9K_SHORTEN_DELIMITER="…"
-
-POWERLEVEL9K_SHOW_CHANGESET=true
-
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=""
-POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=""
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=""
-POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=""
-
-# `dir` color customization
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='transparent'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='darkseagreen4'
-
-POWERLEVEL9K_DIR_HOME_BACKGROUND='transparent'
-POWERLEVEL9K_DIR_HOME_FOREGROUND='deepskyblue3'
-
-POWERLEVEL9K_DIR_ETC_BACKGROUND='transparent'
-POWERLEVEL9K_DIR_ETC_FOREGROUND='lightgoldenrod3'
-
-POWERLEVEL9K_DIR_ROOT_BACKGROUND='transparent'
-POWERLEVEL9K_DIR_ROOT_FOREGROUND='darkseagreen4'
-
-POWERLEVEL9K_DIR_NOT_WRITABLE_BACKGROUND='transparent'
-POWERLEVEL9K_DIR_NOT_WRITABLE_FOREGROUND='red'
-
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='transparent'
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='lightgoldenrod3'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-POWERLEVEL9K_MODE='awesome-fontconfig'
-POWERLEVEL9K_BATTERY_STAGES="▁▂▃▄▅▆▇█"
-
-POWERLEVEL9K_BATTERY_LEVEL_BACKGROUND=(darkred orange4 darkgreen)
-
-
-POWERLEVEL9K_BATTERY_LOW_THRESHOLD=10
-POWERLEVEL9K_BATTERY_VERBOSE=false
-# POWERLEVEL9K_BATTERY_HIDE_ABOVE_THRESHOLD=90
-
-POWERLEVEL9K_BATTERY_LOW_BACKGROUND='transparent'
-POWERLEVEL9K_BATTERY_CHARGING_BACKGROUND='transparent'
-POWERLEVEL9K_BATTERY_CHARGED_BACKGROUND='transparent'
-POWERLEVEL9K_BATTERY_DISCONNECTED_BACKGROUND='transparent'
-
-POWERLEVEL9K_BATTERY_LOW_FOREGROUND='red'
-POWERLEVEL9K_BATTERY_CHARGING_FOREGROUND='lightgoldenrod3'
-POWERLEVEL9K_BATTERY_CHARGED_FOREGROUND='darkseagreen4'
-POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND='grey66'
-
-
-# `status` color customization
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND='transparent'
-POWERLEVEL9K_STATUS_ERROR_FOREGROUND='red1'
-POWERLEVEL9K_STATUS_OK_BACKGROUND='transparent'
-POWERLEVEL9K_STATUS_OK_FOREGROUND='darkseagreen4'
-
-
-# `command_execution_time ` color customization
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='darkkhaki'
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='transparent'
-
-# `load` color customization
-POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND="transparent"
-POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND="red1"
-POWERLEVEL9K_LOAD_WARNING_BACKGROUND="transparent"
-POWERLEVEL9K_LOAD_WARNING_FOREGROUND="lightgoldenrod3"
-POWERLEVEL9K_LOAD_NORMAL_BACKGROUND="transparent"
-POWERLEVEL9K_LOAD_NORMAL_FOREGROUND="darkseagreen4"
-
-
-
-POWERLEVEL9K_DATE_FORMAT=%D{%Y/%m/%d}
-
-# `shamsi date` color customization
-POWERLEVEL9K_CUSTOM_SHAMSI_DATE_BACKGROUND='transparent'
-POWERLEVEL9K_CUSTOM_SHAMSI_DATE_FOREGROUND='lightgoldenrod3'
-
-# `date` color customization
-POWERLEVEL9K_DATE_BACKGROUND='transparent'
-POWERLEVEL9K_DATE_FOREGROUND='lightgoldenrod3'
-
-# `time` color customization
-POWERLEVEL9K_TIME_BACKGROUND='transparent'
-POWERLEVEL9K_TIME_FOREGROUND='orange3'
-
-# `vcs` color customization
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='darkseagreen4'
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='transparent'
-
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='red'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='transparent'
-
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='lightgoldenrod3'
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='transparent'
-
-POWERLEVEL9K_VCS_COMMIT_ICON=""
-POWERLEVEL9K_VCS_GIT_ICON=" "
-
-# `ram` color customization
-POWERLEVEL9K_RAM_BACKGROUND='transparent'
-POWERLEVEL9K_RAM_FOREGROUND='orange3'
-
-
-# `ip` color customization
-POWERLEVEL9K_IP_BACKGROUND='transparent'
-POWERLEVEL9K_IP_FOREGROUND='mediumpurple2'
-
-# `host` color customization
-POWERLEVEL9K_HOST_LOCAL_BACKGROUND='grey15'
-POWERLEVEL9K_HOST_LOCAL_FOREGROUND='yellow'
-
-
-
-
-
-
-
 
 # -------------------- END OF THEME CONFIGS --------------------
 
@@ -323,9 +166,10 @@ export NVM_DIR="$HOME/.nvm"
 ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
 
 
+
+
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-
 
 # -------------------- SET ALIASES --------------------
 
@@ -486,6 +330,10 @@ alias yi="echo '📦 Installing Packages...' && y install"
 alias npmr='f() { echo 🏃 Running ${BCyan}$1${Color_Off} script... && npm run $1 };f'
 alias npmi="echo '📦 Installing Packages...' && npm install"
 
+# pnpm
+alias pnpmr='f() { echo 🏃 Running ${BCyan}$1${Color_Off} script... && pnpm run $1 };f'
+alias pnpmi="echo '📦 Installing Packages...' && pnpm install"
+
 
 # other
 alias ls='exa --icons --across' 
@@ -504,7 +352,7 @@ alias sayPersian="sayFarsi"
 alias code="echo '💻 Opening VSCode...' && open -a 'Visual Studio Code'"
 alias vscode='code' 
 alias docker-desktop="echo '🐳 Opening Docker Desktop...' && open -a Docker\ Desktop" 
-alias chrome="echo '⏳ Opening Google Chrome...' && open -a Google\ Chrome" 
+alias chrome="echo '⏳ Opening Google Chrome...' && open -a 'Google Chrome'" 
 alias chrome-unsafe="echo '👽 Opening Google Chrome with disabled web security...' && open -na Google\ Chrome --args --user-data-dir=/tmp/temporary-chrome-profile-dir --disable-web-security" 
 alias firefox="echo '🦊 Opening Firefox...' && open -a Firefox" 
 alias safari="echo '🧭 Opening Safari...' && open -a Safari" 
@@ -520,5 +368,17 @@ alias cabin-local='f() {echo 🎚️ Opening Cabin Locally... &&  open -a Google
 alias cabin-staging='f() {echo 🎚️ Opening Cabin Staging... &&  open -a Google\ Chrome https://cabin.staging.xp.tapsi.tech };f'
 alias cabin='f() {echo 🎚️ Opening Cabin... &&  open -a Google\ Chrome https://cabin.tapsi.ir };f'
 
+pomodoro() {
+  # usage: work 10m, work 60s etc. Default is 25m
+  timer -f -n '✨ Pomodoro Timer' "${1:-25m}" && terminal-notifier -message 'Pomodoro'\
+  	-title 'Timer is up! 🍅'\
+        -sound Crystal
+}
 
 # -------------------- END OF SET ALIASES --------------------
+
+
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+VOLTA_FEATURE_PNPM=1
