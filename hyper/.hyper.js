@@ -36,7 +36,7 @@ module.exports = {
         // terminal selection color
         selectionColor: '#444',
         // border color (window, tabs)
-        borderColor: '#000',
+        borderColor: '#333',
         // custom CSS to embed in the main window
         css: ``,
         // custom CSS to embed in the terminal window
@@ -44,7 +44,7 @@ module.exports = {
         x-screen a {
             color: blue;
         }
-        
+
         x-screen a.hover {
             text-decoration: none;
         }
@@ -59,7 +59,8 @@ module.exports = {
         // default: `true` (without backticks and without quotes) on Windows and Linux, ignored on macOS
         showWindowControls: '',
         // custom padding (CSS format, i.e.: `top right bottom left`)
-        padding: '12px 14px',
+        padding: '10px',
+        // padding: '12px 14px 12px 14px',
         // the full list. if you're going to provide the full color palette,
         // including the 6 x 6 color cubes and the grayscale map, just provide
         // an array here instead of a color map object
@@ -146,14 +147,14 @@ module.exports = {
     //   `hyperpower`
     //   `@company/project`
     //   `project#1.0.1`
-    plugins: ['hyper-blink', "space-pull", "hyperlinks"],
+    plugins: ['hyper-blink', "hyper-match"],
     // in development, you can create a directory under
     // `~/.hyper_plugins/local/` and include it here
     // to load it and avoid it being `npm install`ed
     localPlugins: [],
     keymaps: {
     // Example
-    // 'window:devtools': 'cmd+alt+o',
+    'window:devtools': 'cmd+alt+i',
     },
 };
 //# sourceMappingURL=config-default.js.map
