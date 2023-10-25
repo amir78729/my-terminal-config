@@ -1,6 +1,5 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -79,6 +78,10 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   web-search
+  history
+  sudo
+  emoji
+  jsontools
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -138,7 +141,6 @@ source $ZSH/oh-my-zsh.sh
 # -------------------- END OF SHOW ALIASES REAL COMMANDS --------------------
 
 
-PATH="~/.nvm/versions/node/v14.18.3/bin:$PATH"
 
 eval $(thefuck --alias)
 
@@ -160,13 +162,15 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+VOLTA_FEATURE_PNPM=1
+
+# PATH="~/.nvm/versions/node/v14.18.3/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
-
-
-
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
@@ -342,11 +346,12 @@ alias tree="tree -C"
 alias csv="sed 's/,,/, ,/g;s/,,/, ,/g' $1 | column -s, -t" 
 alias fgc="getColorCode foreground"
 alias bgc="getColorCode background"
-alias forti="echo '🔐 Running Forti VPN:' && sudo openfortivpn -c /usr/local/etc/openfortivpn/openfortivpn/config"
+alias forti="print -P  '%K{cyan}%F{black}%S🔐 Forti VPN:%s%f%k' && sudo ~/scripts/forti"
 alias curl="echo 'Running Curl...' && curl"
 alias curljson='f() { curl $1 | json_pp };f'
 alias sayFarsi="say -v Dariush"
 alias sayPersian="sayFarsi"
+alias lofi-live="open https://www.youtube.com/watch\?v\=jfKfPfyJRdk -a 'Google Chrome'"
 
 # apps
 alias code="echo '💻 Opening VSCode...' && open -a 'Visual Studio Code'"
@@ -362,11 +367,6 @@ alias outlook="echo '📧 Opening Microsoft Outlook...' && open -a Microsoft\ Ou
 # tapsi automation-backend
 alias run-seed='f() {curljson $1 && echo 🌱 The seed ran successfully};f'
 alias seed-local='run-seed http://localhost:8590/front/api/v1/seed/Automation-Backend@123' 
-alias seed-staging='run-seed https://automation-backend.staging.xp.tapsi.tech/front/api/v1/seed/Automation-Backend@123' 
-
-alias cabin-local='f() {echo 🎚️ Opening Cabin Locally... &&  open -a Google\ Chrome http://localhost:5500 };f'
-alias cabin-staging='f() {echo 🎚️ Opening Cabin Staging... &&  open -a Google\ Chrome https://cabin.staging.xp.tapsi.tech };f'
-alias cabin='f() {echo 🎚️ Opening Cabin... &&  open -a Google\ Chrome https://cabin.tapsi.ir };f'
 
 pomodoro() {
   # usage: work 10m, work 60s etc. Default is 25m
@@ -376,9 +376,3 @@ pomodoro() {
 }
 
 # -------------------- END OF SET ALIASES --------------------
-
-
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-VOLTA_FEATURE_PNPM=1
